@@ -1,33 +1,49 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
 public class Mummy : MonoBehaviour
 {
 
+    Rigidbody2D rb;
+    AIPath aIPath;
+    Animator animator;
+    Vector2 lookDirection = new Vector2(0, -1);
 
     private bool Sleep = true;
 
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
 
+        aIPath = GetComponent<AIPath>();
+        
     }
 
 
     // Update is called once per frame
     void Update()
     {
+        
         if (!Sleep)
         {
-            //Replace following lines with your own magic
-            //Debug.Log("Vampire Secure Area!!");
+            //Debug.Log(aIPath.maxSpeed);
+            aIPath.maxSpeed = 1;
         }
         else
         {
-            //Debug.Log("Too much Light!!");
+
         }
+        lookDirection = aIPath.desiredVelocity.normalized;
+        
+        animator.SetFloat("Look X", lookDirection.x);
+        animator.SetFloat("Look Y", lookDirection.y);
+        animator.SetFloat("Speed",lookDirection.magnitude);
+
     }
+
 
     void OnTriggerStay2D(Collider2D other)
     {
