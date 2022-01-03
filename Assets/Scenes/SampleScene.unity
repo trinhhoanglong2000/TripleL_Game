@@ -697,32 +697,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &306713315 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5361208845420185629, guid: da3169c567334a4478ae365304bbad4c, type: 3}
-  m_PrefabInstance: {fileID: 1547606773}
-  m_PrefabAsset: {fileID: 0}
---- !u!50 &306713316
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 306713315}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &466208869
 GameObject:
   m_ObjectHideFlags: 0
@@ -8934,10 +8908,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5153730176491295382, guid: da3169c567334a4478ae365304bbad4c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5399397336869645528, guid: da3169c567334a4478ae365304bbad4c, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -9277,32 +9247,6 @@ MonoBehaviour:
   m_ShapePathHash: 1568904471
   m_Mesh: {fileID: 877628462}
   m_InstanceId: 21160
---- !u!1 &1772261903 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5153730176491295382, guid: da3169c567334a4478ae365304bbad4c, type: 3}
-  m_PrefabInstance: {fileID: 1547606773}
-  m_PrefabAsset: {fileID: 0}
---- !u!50 &1772261906
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1772261903}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1001 &1883559412
 PrefabInstance:
   m_ObjectHideFlags: 0
