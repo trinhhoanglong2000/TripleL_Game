@@ -6,6 +6,7 @@ public class Explorer : MonoBehaviour
 {
     //public 
     [SerializeField] float speed = 10.0f;
+    public UnityEngine.Experimental.Rendering.Universal.Light2D Light;
 
     //Physic and Movement
     Rigidbody2D rigidbody2d;
@@ -14,6 +15,8 @@ public class Explorer : MonoBehaviour
     //Animation
     Animator animator;
     Vector2 lookDirection = new Vector2(0, -1);
+    private bool LightOn = true;
+    private GameObject Lightcollider,LightcolliderEnemy;
 
 
     // Start is called before the first frame update
@@ -21,6 +24,9 @@ public class Explorer : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         rigidbody2d = GetComponent<Rigidbody2D>();
+        Lightcollider = GameObject.FindGameObjectWithTag("PlayerLightEnemy");
+        LightcolliderEnemy= GameObject.FindGameObjectWithTag("PlayerLight");
+
     }
 
     // Update is called once per frame
@@ -40,6 +46,25 @@ public class Explorer : MonoBehaviour
         animator.SetFloat("Look X", lookDirection.x);
         animator.SetFloat("Look Y", lookDirection.y);
         animator.SetFloat("Speed", move.magnitude);
+
+        //
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            
+            LightOn = !LightOn;
+
+            Lightcollider.SetActive(LightOn);
+            LightcolliderEnemy.SetActive(LightOn);
+            if (!LightOn)
+            {
+                Light.pointLightOuterRadius = 1f;
+
+            }
+            else
+            {
+                Light.pointLightOuterRadius = 3f;
+            }
+        }
     }
     void FixedUpdate()
     {
