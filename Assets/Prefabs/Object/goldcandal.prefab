@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 173072087472854024}
   - component: {fileID: 2282446718347774725}
   m_Layer: 0
-  m_Name: GoldStatue
+  m_Name: goldcandal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
