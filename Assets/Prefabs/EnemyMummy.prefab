@@ -102,6 +102,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AWakeClip: {fileID: 8300000, guid: d7eadcf92ca98fc47ae71509d1098173, type: 3}
+  waitTime: 3
+  speed: 3
 --- !u!61 &7713167867843306268
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -243,7 +245,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0

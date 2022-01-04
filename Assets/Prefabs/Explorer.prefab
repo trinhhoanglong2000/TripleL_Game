@@ -332,6 +332,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   Light: {fileID: 5442460045271145448}
+  health: 4
+  maxHealth: 4
+  hearts:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  fullheart: {fileID: 21300000, guid: a62c3d3dd0660384ab85c8315853a2e7, type: 3}
+  emptyheart: {fileID: 21300000, guid: 24a6922694dc1c94a872d15d76525f60, type: 3}
+  timeInvincible: 2
 --- !u!50 &-4658766207468006115
 Rigidbody2D:
   serializedVersion: 4
@@ -350,7 +367,7 @@ Rigidbody2D:
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 4
 --- !u!61 &5264656691263269089

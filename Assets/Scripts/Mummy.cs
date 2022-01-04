@@ -15,6 +15,8 @@ public class Mummy : MonoBehaviour
 
     private bool Sleep = true;
     private bool Roar = false;
+    private bool SleepAfterHit = false;
+    private bool Stand = false;
     AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
@@ -31,6 +33,11 @@ public class Mummy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //slowly run 
+        if (Stand)
+        {
+            aIPath.maxSpeed = Mathf.Clamp(aIPath.maxSpeed - Time.deltaTime, 0, speed);
+        }
 
         if (!Sleep)
         {
@@ -49,22 +56,49 @@ public class Mummy : MonoBehaviour
     }
     IEnumerator Awaking()
     {
+
         PlaySound(AWakeClip);
         yield return new WaitForSeconds(waitTime);
         //set Movement speed
         Roar = true;
-        
+
+
+    }
+    IEnumerator Idleing()
+    {
+
+        SleepAfterHit = true;
+        //aIPath.maxSpeed = 0;
+
+        Stand = true;
+
+        yield return new WaitForSeconds(waitTime);
+        //set Movement speed
+        SleepAfterHit = false;
+
 
 
     }
     public void PlaySound(AudioClip clip)
     {
-        
+
         audioSource.PlayOneShot(clip);
     }
+
     // 
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        Explorer player = other.gameObject.GetComponent<Explorer>();
+
+        if (player != null)
+        {
+            player.ChangeHealth(-1);
+            StartCoroutine(Idleing());
+        }
+    }
     void OnTriggerStay2D(Collider2D other)
     {
+        if (SleepAfterHit) return;
         if (Sleep && other.gameObject.tag == "PlayerLight")
         {
 
@@ -98,8 +132,8 @@ public class Mummy : MonoBehaviour
 
                 if (Roar)
                 {
-                    
                     aIPath.maxSpeed = speed;
+                    Stand = false;
                 }
 
 
@@ -112,11 +146,12 @@ public class Mummy : MonoBehaviour
     }
     void OnTriggerExit2D(Collider2D other)
     {
-       
+
         if (other.gameObject.tag == "PlayerLightEnemy")
         {
-           
-            aIPath.maxSpeed = 0;
+
+            //aIPath.maxSpeed = 0;
+            Stand = true;
 
         }
 
