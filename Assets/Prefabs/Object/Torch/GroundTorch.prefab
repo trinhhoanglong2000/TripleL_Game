@@ -81,6 +81,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3406045402729835925}
+  - component: {fileID: 8203567881473468068}
   m_Layer: 0
   m_Name: GroundTorch
   m_TagString: Untagged
@@ -96,7 +97,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2578227169242240269}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -27.68, y: -0.89, z: -2.170295}
+  m_LocalPosition: {x: -27.813, y: -0.721, z: -2.170295}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4044872449147500635}
@@ -105,6 +106,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!210 &8203567881473468068
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2578227169242240269}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!1 &8130707753876191541
 GameObject:
   m_ObjectHideFlags: 0
@@ -131,7 +143,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8130707753876191541}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.7438774, y: 0.040239334, z: 2.170295}
+  m_LocalPosition: {x: 0.267, y: 0.553, z: 2.170295}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3406045402729835925}
@@ -232,7 +244,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8581986607909035812}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.9098778, y: -0.7147608, z: 2.170295}
+  m_LocalPosition: {x: 0.08, y: -0.195, z: 2.170295}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3406045402729835925}
