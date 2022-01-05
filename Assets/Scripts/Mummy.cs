@@ -8,6 +8,8 @@ public class Mummy : MonoBehaviour
     public AudioClip AWakeClip;
     public float waitTime = 3f;
     public float speed = 2;
+    public int damage = 1;
+
     Rigidbody2D rb;
     AIPath aIPath;
     Animator animator;
@@ -92,7 +94,7 @@ public class Mummy : MonoBehaviour
 
         if (player != null)
         {
-            player.ChangeHealth(-1);
+            player.ChangeHealth(-damage);
             StartCoroutine(Idleing());
         }
     }
