@@ -336,7 +336,7 @@ MonoBehaviour:
   Energy: 10
   MaxEnergy: 10
   timeInvincible: 2
-  Eneryrate: 0.2
+  Eneryrate: 0.15
   delayTurnOn: 1
   Light: {fileID: 5442460045271145448}
   hearts:
