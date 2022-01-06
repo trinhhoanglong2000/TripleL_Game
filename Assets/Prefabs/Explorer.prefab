@@ -47,7 +47,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 2.2
+  m_Radius: 2.4
 --- !u!50 &1772261906
 Rigidbody2D:
   serializedVersion: 4
@@ -287,7 +287,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 0
   m_Sprite: {fileID: 9119336692724903477, guid: 0f1e73615cdd26c4d83181c338d33e9b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -298,7 +298,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!95 &-3225260628867594959
 Animator:
   serializedVersion: 3
@@ -331,9 +331,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  Light: {fileID: 5442460045271145448}
   health: 4
   maxHealth: 4
+  Energy: 0.27
+  MaxEnergy: 0.75
+  timeInvincible: 2
+  Light: {fileID: 5442460045271145448}
   hearts:
   - {fileID: 0}
   - {fileID: 0}
@@ -348,7 +351,7 @@ MonoBehaviour:
   - {fileID: 0}
   fullheart: {fileID: 21300000, guid: a62c3d3dd0660384ab85c8315853a2e7, type: 3}
   emptyheart: {fileID: 21300000, guid: 24a6922694dc1c94a872d15d76525f60, type: 3}
-  timeInvincible: 2
+  EnergyBar: {fileID: 0}
 --- !u!50 &-4658766207468006115
 Rigidbody2D:
   serializedVersion: 4

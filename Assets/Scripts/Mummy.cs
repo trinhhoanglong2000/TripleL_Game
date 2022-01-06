@@ -140,6 +140,9 @@ public class Mummy : MonoBehaviour
 
 
 
+            }else{
+                //awkae but is block my wall
+                Stand = true;
             }
 
         }

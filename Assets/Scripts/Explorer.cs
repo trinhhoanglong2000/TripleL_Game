@@ -5,9 +5,29 @@ using UnityEngine.UI;
 public class Explorer : MonoBehaviour
 {
     //public 
-    [SerializeField] float speed = 10.0f;
-    public UnityEngine.Experimental.Rendering.Universal.Light2D Light;
+    [Header("Stats")]
+    public float speed = 10.0f;
+    [Range(0, 11)]
+    public int health;
+    [Range(0, 11)]
 
+    public int maxHealth;
+    public float Energy;
+    public float MaxEnergy;
+    public float timeInvincible = 2.0f;
+    public float Eneryrate = 1f;
+    public float delayTurnOn = 1f;
+    public int currentHealth { get { return health; } }
+    [Header("Reference gameobjects")]
+    public UnityEngine.Experimental.Rendering.Universal.Light2D Light;
+    [Header("UI GameObject")]
+    public Image[] hearts;
+    public Sprite fullheart;
+    public Sprite emptyheart;
+    public Image EnergyBar;
+    public Image EnergyIcon;
+
+    private float LerpSpeed;
     //Physic and Movement
     Rigidbody2D rigidbody2d;
     float deltaX;
@@ -16,17 +36,15 @@ public class Explorer : MonoBehaviour
     Animator animator;
     Vector2 lookDirection = new Vector2(0, -1);
     private bool LightOn = true;
+    private bool outEnergy = false;
+
+    private bool isDelay = false;
     private GameObject Lightcollider, LightcolliderEnemy;
-    // ================={UI and Health}======================
-    public int health;
-    public int maxHealth;
-    public Image[] hearts;
-    public Sprite fullheart;
-    public Sprite emptyheart;
+
+
 
     //==================={Invincible when take dame} ==============
-    public float timeInvincible = 2.0f;
-    public int currentHealth { get { return health; } }
+
     bool isInvincible;
     float invincibleTimer;
 
@@ -37,6 +55,7 @@ public class Explorer : MonoBehaviour
         rigidbody2d = GetComponent<Rigidbody2D>();
         Lightcollider = GameObject.FindGameObjectWithTag("PlayerLightEnemy");
         LightcolliderEnemy = GameObject.FindGameObjectWithTag("PlayerLight");
+        LerpSpeed = 3f * Time.deltaTime;
 
     }
 
@@ -66,15 +85,58 @@ public class Explorer : MonoBehaviour
 
             }
         }
+        //===========================|UI Energy|=======================
+        EnergyBar.fillAmount = Mathf.Lerp(EnergyBar.fillAmount, Energy / MaxEnergy, LerpSpeed);
+        //EnergyBar.fillAmount = Energy / MaxEnergy;
+        Color energycolor = Color.Lerp(Color.red, Color.green, Energy / MaxEnergy);
+        EnergyBar.color = energycolor;
+        EnergyIcon.color = energycolor;
 
-        //
+        //light slowly turn on or turn off
+
+        if (!LightOn || outEnergy)
+        {
+            Light.pointLightOuterRadius = Mathf.Clamp(Light.pointLightOuterRadius - Time.deltaTime * 4f, 1f, 3f);
+            //Light.pointLightOuterRadius = Mathf.Lerp(Light.pointLightOuterRadius, 1f, LerpSpeed);
+
+        }
+        else
+        {
+            Light.pointLightOuterRadius = Mathf.Clamp(Light.pointLightOuterRadius + Time.deltaTime * 4f, 1f, 3f);
+        }
+
+        // check invincible
         if (isInvincible)
         {
             invincibleTimer -= Time.deltaTime;
             if (invincibleTimer < 0)
                 isInvincible = false;
         }
-        
+        //check energy
+        if (Mathf.Approximately(Energy, 0.0f))
+        {
+            outEnergy = true;
+            if (LightOn)
+            {
+                Lightcollider.SetActive(false);
+                LightcolliderEnemy.SetActive(false);
+                //Light.pointLightOuterRadius = 1f;
+            }
+
+        }
+        else
+        {
+            outEnergy = false;
+
+            if (LightOn)
+            {
+                Lightcollider.SetActive(true);
+                LightcolliderEnemy.SetActive(true);
+                //Light.pointLightOuterRadius = 3f;
+
+            }
+        }
+
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
         deltaX = horizontal * Time.fixedDeltaTime * speed;
@@ -93,24 +155,37 @@ public class Explorer : MonoBehaviour
         //
         if (Input.GetKeyDown(KeyCode.O))
         {
-
+            //delay when turn on
+            if (isDelay){
+                return;
+            }
             LightOn = !LightOn;
 
             Lightcollider.SetActive(LightOn);
             LightcolliderEnemy.SetActive(LightOn);
-            if (!LightOn)
-            {
-                Light.pointLightOuterRadius = 1f;
+            
+            StartCoroutine(DelayTurnOn());
+            
 
-            }
-            else
-            {
-                Light.pointLightOuterRadius = 3f;
-            }
         }
+    }
+    IEnumerator DelayTurnOn()
+    {
+        isDelay=true;
+        yield return new WaitForSeconds(delayTurnOn);
+        //set Movement speed
+        isDelay=false;
+
+
     }
     void FixedUpdate()
     {
+        //Energy Down
+        if (LightOn)
+        {
+            Energy = Mathf.Clamp(Energy - Eneryrate * Time.deltaTime, 0, MaxEnergy);
+        }
+        Debug.Log(Time.deltaTime);
         Vector2 position = rigidbody2d.position;
         position.x = position.x + deltaX;
         position.y = position.y + deltaY;
@@ -122,13 +197,13 @@ public class Explorer : MonoBehaviour
         {
             if (isInvincible)
                 return;
-            
+
             isInvincible = true;
             invincibleTimer = timeInvincible;
         }
-        
+
         health = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
-        
+
     }
 
 }
