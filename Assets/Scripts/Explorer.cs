@@ -18,6 +18,7 @@ public class Explorer : MonoBehaviour
     public float Eneryrate = 1f;
     public float delayTurnOn = 1f;
     public int currentHealth { get { return health; } }
+
     [Header("Reference gameobjects")]
     public UnityEngine.Experimental.Rendering.Universal.Light2D Light;
     [Header("UI GameObject")]
@@ -203,6 +204,12 @@ public class Explorer : MonoBehaviour
         }
 
         health = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
+
+    }
+    public void RechareLight(int amount)
+    {
+      
+        Energy = Mathf.Clamp(Energy + amount, 0, MaxEnergy);
 
     }
 
