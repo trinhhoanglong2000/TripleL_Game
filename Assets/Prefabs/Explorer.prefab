@@ -333,9 +333,11 @@ MonoBehaviour:
   speed: 3
   health: 4
   maxHealth: 4
-  Energy: 0.27
-  MaxEnergy: 0.75
+  Energy: 10
+  MaxEnergy: 10
   timeInvincible: 2
+  Eneryrate: 0.2
+  delayTurnOn: 1
   Light: {fileID: 5442460045271145448}
   hearts:
   - {fileID: 0}
@@ -352,6 +354,7 @@ MonoBehaviour:
   fullheart: {fileID: 21300000, guid: a62c3d3dd0660384ab85c8315853a2e7, type: 3}
   emptyheart: {fileID: 21300000, guid: 24a6922694dc1c94a872d15d76525f60, type: 3}
   EnergyBar: {fileID: 0}
+  EnergyIcon: {fileID: 0}
 --- !u!50 &-4658766207468006115
 Rigidbody2D:
   serializedVersion: 4
