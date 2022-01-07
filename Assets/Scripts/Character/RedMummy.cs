@@ -9,8 +9,13 @@ public class RedMummy : MonoBehaviour
     public float waitTime = 3f;
     public float speed = 2;
     public int damage = 1;
-
+    public float timeInvincible = 2.0f;
+    public int maxHealth = 20;
+    
+    public int health;
+    [Range(0, 20)]
     Rigidbody2D rb;
+    
     AIPath aIPath;
     Animator animator;
     Vector2 lookDirection = new Vector2(0, -1);
@@ -20,9 +25,14 @@ public class RedMummy : MonoBehaviour
     private bool SleepAfterHit = false;
     private bool Stand = false;
     AudioSource audioSource;
+    //==================={Invincible when take dame} ==============
+
+    bool isInvincible;
+    float invincibleTimer;
     // Start is called before the first frame update
     void Start()
     {
+        
         animator = GetComponent<Animator>();
 
         aIPath = GetComponent<AIPath>();
@@ -35,6 +45,13 @@ public class RedMummy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Invicible when getting hit
+        if (isInvincible)
+        {
+            invincibleTimer -= Time.deltaTime;
+            if (invincibleTimer < 0)
+                isInvincible = false;
+        }
         //slowly run 
         if (Stand)
         {
@@ -60,6 +77,7 @@ public class RedMummy : MonoBehaviour
     {
 
         PlaySound(AWakeClip);
+
         yield return new WaitForSeconds(waitTime);
         //set Movement speed
         Roar = true;
@@ -83,7 +101,6 @@ public class RedMummy : MonoBehaviour
     }
     public void PlaySound(AudioClip clip)
     {
-
         audioSource.PlayOneShot(clip);
     }
 
@@ -147,6 +164,20 @@ public class RedMummy : MonoBehaviour
 
         }
 
+
+    }
+    public void ChangeHealth(int amount)
+    {
+        if (amount < 0)
+        {
+            if (isInvincible)
+                return;
+
+            isInvincible = true;
+            invincibleTimer = timeInvincible;
+        }
+
+        health = Mathf.Clamp(health + amount, 0, maxHealth);
 
     }
     void OnTriggerExit2D(Collider2D other)

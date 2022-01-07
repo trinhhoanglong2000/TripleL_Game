@@ -9,7 +9,11 @@ public class Mummy : MonoBehaviour
     public float waitTime = 3f;
     public float speed = 2;
     public int damage = 1;
+    public float timeInvincible = 2.0f;
+    public int maxHealth = 20;
 
+    public int health;
+    [Range(0, 20)]
     Rigidbody2D rb;
     AIPath aIPath;
     Animator animator;
@@ -20,6 +24,10 @@ public class Mummy : MonoBehaviour
     private bool SleepAfterHit = false;
     private bool Stand = false;
     AudioSource audioSource;
+     //==================={Invincible when take dame} ==============
+
+    bool isInvincible;
+    float invincibleTimer;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +43,13 @@ public class Mummy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+         //Invicible when getting hit
+        if (isInvincible)
+        {
+            invincibleTimer -= Time.deltaTime;
+            if (invincibleTimer < 0)
+                isInvincible = false;
+        }
         //slowly run 
         if (Stand)
         {
@@ -140,13 +155,29 @@ public class Mummy : MonoBehaviour
 
 
 
-            }else{
+            }
+            else
+            {
                 //awkae but is block my wall
                 Stand = true;
             }
 
         }
 
+
+    }
+    public void ChangeHealth(int amount)
+    {
+        if (amount < 0)
+        {
+            if (isInvincible)
+                return;
+
+            isInvincible = true;
+            invincibleTimer = timeInvincible;
+        }
+
+        health = Mathf.Clamp(health + amount, 0, maxHealth);
 
     }
     void OnTriggerExit2D(Collider2D other)
