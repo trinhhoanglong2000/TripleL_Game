@@ -456,7 +456,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5977168137647680851
 RectTransform:
   m_ObjectHideFlags: 0
@@ -692,8 +692,10 @@ MonoBehaviour:
   timeInvincible: 2
   Eneryrate: 0.15
   delayTurnOn: 1
-  interactKey: 0
-  holdTime: 2
+  maxLight: 3
+  minLight: 1
+  LightOn: 0
+  interactKey: 101
   Light: {fileID: 5442460045271145448}
   hearts:
   - {fileID: 0}
@@ -711,6 +713,8 @@ MonoBehaviour:
   emptyheart: {fileID: 21300000, guid: 24a6922694dc1c94a872d15d76525f60, type: 3}
   EnergyBar: {fileID: 0}
   EnergyIcon: {fileID: 0}
+  ImageProgressBar: {fileID: 7050458845983019120}
+  progressTime: 1.5
 --- !u!50 &-4658766207468006115
 Rigidbody2D:
   serializedVersion: 4
@@ -816,7 +820,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.83137256, g: 0.48594686, b: 0.090196095, a: 0.8}
+  m_Color: {r: 0.58178693, g: 0.9716981, b: 0.5271004, a: 0.8}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -828,7 +832,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 1
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0

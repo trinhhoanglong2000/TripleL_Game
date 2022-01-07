@@ -77,6 +77,8 @@ public class Explorer : MonoBehaviour
             Light.pointLightOuterRadius = minLight;
 
         }
+        Lightcollider.SetActive(LightOn);
+        LightcolliderEnemy.SetActive(LightOn);
 
     }
 
