@@ -19,6 +19,9 @@ public class Explorer : MonoBehaviour
     public float delayTurnOn = 1f;
     public int currentHealth { get { return health; } }
 
+    public KeyCode interactKey;
+    public float holdTime = 2.0f;
+
     [Header("Reference gameobjects")]
     public UnityEngine.Experimental.Rendering.Universal.Light2D Light;
     [Header("UI GameObject")]
@@ -29,6 +32,9 @@ public class Explorer : MonoBehaviour
     public Image EnergyIcon;
 
     private float LerpSpeed;
+    // Timer ---------------------------------------------
+    private float timer = 0f;
+    private float startTime = 0f;
     //Physic and Movement
     Rigidbody2D rigidbody2d;
     float deltaX;
@@ -157,25 +163,81 @@ public class Explorer : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.O))
         {
             //delay when turn on
-            if (isDelay){
+            if (isDelay)
+            {
                 return;
             }
             LightOn = !LightOn;
 
             Lightcollider.SetActive(LightOn);
             LightcolliderEnemy.SetActive(LightOn);
-            
+
             StartCoroutine(DelayTurnOn());
-            
+        }
+
+        //INTERACTABLE ----------------------------------
+        // Starts the timer from when the key is pressed
+        if (Input.GetKeyDown(interactKey))
+        {
+            startTime = Time.time;
+            timer = startTime;
 
         }
+
+        // Adds time onto the timer so long as the key is pressed
+        if (Input.GetKey(interactKey))
+        {
+            RaycastHit2D hit = Physics2D.Raycast(rigidbody2d.position + Vector2.up * 0.2f, lookDirection, 1f, LayerMask.GetMask("Interactable"));
+            timer += Time.deltaTime;
+            if (hit.collider != null)
+            {
+                TreasureChest chest = hit.collider.GetComponent<TreasureChest>();
+                Debug.Log("Raycast has hit the object " + hit.collider);
+                if (chest != null)
+                {
+                    chest.OpenAction();
+                    if (timer > (startTime + holdTime))
+                    {
+                        //held = true;
+                        chest.ButtonHeld(holdTime);
+                    }
+                }
+                timer += Time.deltaTime;
+
+            }
+            else {
+                GameObject tag = GameObject.FindGameObjectWithTag("TreasureChest");
+            
+            TreasureChest chest = tag.GetComponent<TreasureChest>();
+            chest.CloseAction();
+            }
+        }
+        else
+        {
+            GameObject tag = GameObject.FindGameObjectWithTag("TreasureChest");
+            
+            TreasureChest chest = tag.GetComponent<TreasureChest>();
+            chest.CloseAction();
+        }
+        // if (Input.GetKeyDown(interactKey))
+        // {
+        //     RaycastHit2D hit = Physics2D.Raycast(rigidbody2d.position + Vector2.up * 0.2f, lookDirection, 1.5f, LayerMask.GetMask("Interactable"));
+        //     if (hit.collider != null)
+        //     {
+        //         TreasureChest chest = hit.collider.GetComponent<TreasureChest>();
+        //         Debug.Log("Raycast has hit the object " + hit.collider.gameObject);
+        //         if (chest != null){
+        //             chest.OpenAction();
+        //         }
+        //     }
+        // }
     }
     IEnumerator DelayTurnOn()
     {
-        isDelay=true;
+        isDelay = true;
         yield return new WaitForSeconds(delayTurnOn);
         //set Movement speed
-        isDelay=false;
+        isDelay = false;
 
 
     }
@@ -208,7 +270,7 @@ public class Explorer : MonoBehaviour
     }
     public void RechareLight(int amount)
     {
-      
+
         Energy = Mathf.Clamp(Energy + amount, 0, MaxEnergy);
 
     }

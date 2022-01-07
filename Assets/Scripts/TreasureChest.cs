@@ -7,53 +7,56 @@ public class TreasureChest : MonoBehaviour
     Animator animator;
 
 
-
     // Update is called once per frame
     // Timer controls
-    private float startTime = 0f;
-    private float timer = 0f;
-    public float holdTime = 2.0f;
-    private bool held = false;
+    private float holdTime = 2.0f;
+    
     public KeyCode key;
     void Start()
     {
         animator = GetComponent<Animator>();
 
     }
-    void Update()
-    {
+    // void Update()
+    // {
     
-        // Starts the timer from when the key is pressed
-        if (Input.GetKeyDown(key))
-        {
-            startTime = Time.time;
-            timer = startTime;
+    //     // Starts the timer from when the key is pressed
+    //     if (Input.GetKeyDown(key))
+    //     {
+    //         startTime = Time.time;
+    //         timer = startTime;
             
-        }
+    //     }
 
-        // Adds time onto the timer so long as the key is pressed
-        if (Input.GetKey(key) && held == false)
-        {
-            animator.SetBool("Open",true);
-            Debug.Log("Check1");
-            timer += Time.deltaTime;
-            // Once the timer float has added on the required holdTime, changes the bool (for a single trigger), and calls the function
-            if (timer > (startTime + holdTime))
-            {
-                //held = true;
-                ButtonHeld();
-            }
-        }
-        else {
-            Debug.Log("Check");
-            animator.SetBool("Open",false);
-        }
+    //     // Adds time onto the timer so long as the key is pressed
+    //     if (Input.GetKey(key) && held == false)
+    //     {
+    //         animator.SetBool("Open",true);
+    //         Debug.Log("Check1");
+    //         timer += Time.deltaTime;
+    //         // Once the timer float has added on the required holdTime, changes the bool (for a single trigger), and calls the function
+    //         if (timer > (startTime + holdTime))
+    //         {
+    //             //held = true;
+    //             ButtonHeld();
+    //         }
+    //     }
+    //     else {
+    //         Debug.Log("Check");
+    //         animator.SetBool("Open",false);
+    //     }
 
+    // }
+    public void OpenAction(){
+        animator.SetBool("Open",true);
     }
-
+    public void CloseAction(){
+        animator.SetBool("Open",false);
+    }
     // Method called after held for required time
-    void ButtonHeld()
+    public void ButtonHeld(float hold)
     {
+        holdTime = hold;
         Debug.Log("held for " + holdTime + " seconds");
     }
 }

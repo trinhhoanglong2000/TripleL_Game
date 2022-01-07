@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 633714025250261783}
   - component: {fileID: 633714025250261780}
   - component: {fileID: 633714025250261781}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TreasureChest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 633714025250261776}
-  m_LocalRotation: {x: 0.008727774, y: -0, z: -0, w: 0.9999619}
+  m_LocalRotation: {x: 0.008726558, y: 0, z: 0, w: 0.999962}
   m_LocalPosition: {x: -0.27, y: 11.29, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -99,7 +99,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.27251658, y: -0.31647038}
+  m_Offset: {x: -0.27251658, y: -0.2447592}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -110,7 +110,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8967312, y: 0.43372583}
+  m_Size: {x: 0.8967312, y: 0.60527015}
   m_EdgeRadius: 0
 --- !u!95 &633714025250261780
 Animator:
@@ -155,7 +155,7 @@ GameObject:
   m_Component:
   - component: {fileID: 633714025469479162}
   - component: {fileID: 633714025469479163}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Point Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
