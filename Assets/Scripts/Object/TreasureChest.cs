@@ -54,9 +54,8 @@ public class TreasureChest : MonoBehaviour
         animator.SetBool("Open",false);
     }
     // Method called after held for required time
-    public void ButtonHeld(float hold)
+    public void Open()
     {
-        holdTime = hold;
-        Debug.Log("held for " + holdTime + " seconds");
+        Debug.Log("OPENED");
     }
 }

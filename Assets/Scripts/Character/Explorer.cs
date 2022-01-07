@@ -18,9 +18,10 @@ public class Explorer : MonoBehaviour
     public float Eneryrate = 1f;
     public float delayTurnOn = 1f;
     public int currentHealth { get { return health; } }
+    public float maxLight = 3f, minLight = 1f;
+    public bool LightOn = false;
 
     public KeyCode interactKey;
-    public float holdTime = 2.0f;
 
     [Header("Reference gameobjects")]
     public UnityEngine.Experimental.Rendering.Universal.Light2D Light;
@@ -30,11 +31,14 @@ public class Explorer : MonoBehaviour
     public Sprite emptyheart;
     public Image EnergyBar;
     public Image EnergyIcon;
-
+    public GameObject ImageProgressBar;
+    public float progressTime = 2f;
     private float LerpSpeed;
     // Timer ---------------------------------------------
     private float timer = 0f;
     private float startTime = 0f;
+
+
     //Physic and Movement
     Rigidbody2D rigidbody2d;
     float deltaX;
@@ -42,8 +46,8 @@ public class Explorer : MonoBehaviour
     //Animation
     Animator animator;
     Vector2 lookDirection = new Vector2(0, -1);
-    private bool LightOn = true;
     private bool outEnergy = false;
+    private Image processbar;
 
     private bool isDelay = false;
     private GameObject Lightcollider, LightcolliderEnemy;
@@ -63,6 +67,16 @@ public class Explorer : MonoBehaviour
         Lightcollider = GameObject.FindGameObjectWithTag("PlayerLightEnemy");
         LightcolliderEnemy = GameObject.FindGameObjectWithTag("PlayerLight");
         LerpSpeed = 3f * Time.deltaTime;
+        processbar = ImageProgressBar.transform.Find("Bar").GetComponent<Image>();
+        if (LightOn)
+        {
+            Light.pointLightOuterRadius = maxLight;
+        }
+        else
+        {
+            Light.pointLightOuterRadius = minLight;
+
+        }
 
     }
 
@@ -103,13 +117,13 @@ public class Explorer : MonoBehaviour
 
         if (!LightOn || outEnergy)
         {
-            Light.pointLightOuterRadius = Mathf.Clamp(Light.pointLightOuterRadius - Time.deltaTime * 4f, 1f, 3f);
+            Light.pointLightOuterRadius = Mathf.Clamp(Light.pointLightOuterRadius - Time.deltaTime * 4f, minLight, maxLight);
             //Light.pointLightOuterRadius = Mathf.Lerp(Light.pointLightOuterRadius, 1f, LerpSpeed);
 
         }
         else
         {
-            Light.pointLightOuterRadius = Mathf.Clamp(Light.pointLightOuterRadius + Time.deltaTime * 4f, 1f, 3f);
+            Light.pointLightOuterRadius = Mathf.Clamp(Light.pointLightOuterRadius + Time.deltaTime * 4f, minLight, maxLight);
         }
 
         // check invincible
@@ -179,43 +193,57 @@ public class Explorer : MonoBehaviour
         // Starts the timer from when the key is pressed
         if (Input.GetKeyDown(interactKey))
         {
-            startTime = Time.time;
-            timer = startTime;
+            RaycastHit2D hit = Physics2D.Raycast(rigidbody2d.position, lookDirection, 1f, LayerMask.GetMask("Interactable"));
+            if (hit.collider != null)
+            {
+                timer = 0f;
+                processbar.fillAmount = 0;
+                ImageProgressBar.SetActive(true);
+
+            }
 
         }
 
         // Adds time onto the timer so long as the key is pressed
         if (Input.GetKey(interactKey))
         {
-            RaycastHit2D hit = Physics2D.Raycast(rigidbody2d.position + Vector2.up * 0.2f, lookDirection, 1f, LayerMask.GetMask("Interactable"));
-            timer += Time.deltaTime;
+            RaycastHit2D hit = Physics2D.Raycast(rigidbody2d.position, lookDirection, 1f, LayerMask.GetMask("Interactable"));
             if (hit.collider != null)
             {
+                //ImageProgressBar.SetActive(true);
+
+                timer += Time.deltaTime;
+                processbar.fillAmount = timer / progressTime;
                 TreasureChest chest = hit.collider.GetComponent<TreasureChest>();
                 Debug.Log("Raycast has hit the object " + hit.collider);
                 if (chest != null)
                 {
                     chest.OpenAction();
-                    if (timer > (startTime + holdTime))
+                    if (timer > (progressTime))
                     {
                         //held = true;
-                        chest.ButtonHeld(holdTime);
+                        chest.Open();
+                        ImageProgressBar.SetActive(false);
+
                     }
+
                 }
-                timer += Time.deltaTime;
+
 
             }
-            else {
+            else
+            {
                 GameObject tag = GameObject.FindGameObjectWithTag("TreasureChest");
-            
-            TreasureChest chest = tag.GetComponent<TreasureChest>();
-            chest.CloseAction();
+
+                TreasureChest chest = tag.GetComponent<TreasureChest>();
+                chest.CloseAction();
             }
         }
-        else
+        if (Input.GetKeyUp(interactKey))
         {
             GameObject tag = GameObject.FindGameObjectWithTag("TreasureChest");
-            
+            ImageProgressBar.SetActive(false);
+
             TreasureChest chest = tag.GetComponent<TreasureChest>();
             chest.CloseAction();
         }
