@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7035920476191452740}
   - component: {fileID: -8999741536057567216}
   - component: {fileID: -5874283385537360343}
+  - component: {fileID: 666900332}
   m_Layer: 0
   m_Name: HeartItem
   m_TagString: Untagged
@@ -73,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a62c3d3dd0660384ab85c8315853a2e7, type: 3}
+  m_Sprite: {fileID: 3912867307873304775, guid: 1200b32829481d8458d14f871baf92f4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -101,7 +102,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.56666666, y: 0.56666666}
+    oldSize: {x: 0.6666667, y: 0.93333334}
     newSize: {x: 0.17, y: 0.17}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -122,3 +123,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 953db87c0444b1a439c20dde0e3ef833, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &666900332
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7868693892276529500}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c70c84abd39552d4f9d718582d3407d2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
