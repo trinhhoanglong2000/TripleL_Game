@@ -225,18 +225,29 @@ public class Explorer : MonoBehaviour
                 timer += Time.deltaTime;
                 processbar.fillAmount = timer / progressTime;
                 TreasureChest chest = hit.collider.GetComponent<TreasureChest>();
+                GlowingRock rock = hit.collider.GetComponent<GlowingRock>();
                 Debug.Log("Raycast has hit the object " + hit.collider);
+
+                //Interact with chest
                 if (chest != null)
                 {
                     chest.OpenAction();
                     if (timer > (progressTime))
                     {
-                        //held = true;
                         chest.Open();
                         ImageProgressBar.SetActive(false);
-
                     }
-
+                }
+                //Interact with glowing rock
+                if (rock != null)
+                {
+                   
+                    if (timer > (progressTime))
+                    {
+                        rock.comsume();
+                        ImageProgressBar.SetActive(false);
+                        RechareLight(10);
+                    }
                 }
 
 
