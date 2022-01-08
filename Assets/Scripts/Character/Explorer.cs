@@ -262,7 +262,7 @@ public class Explorer : MonoBehaviour
                 //Interact with glowing rock
                 if (rock != null)
                 {
-
+                    rock.SoundController(false);
                     if (timer > (progressTime))
                     {
                         rock.comsume();
@@ -282,7 +282,12 @@ public class Explorer : MonoBehaviour
                     TreasureChest chest = tag.GetComponent<TreasureChest>();
                     chest.CloseAction();
                 }
-
+                tags = GameObject.FindGameObjectsWithTag("GlowingRock");
+                foreach (GameObject tag in tags)
+                {
+                    GlowingRock rock = tag.GetComponent<GlowingRock>();
+                    rock.SoundController(true);
+                }
             }
         }
         if (Input.GetKeyUp(interactKey))
@@ -295,19 +300,13 @@ public class Explorer : MonoBehaviour
                 TreasureChest chest = tag.GetComponent<TreasureChest>();
                 chest.CloseAction();
             }
+            tags = GameObject.FindGameObjectsWithTag("GlowingRock");
+            foreach (GameObject tag in tags)
+            {
+                GlowingRock rock = tag.GetComponent<GlowingRock>();
+                rock.SoundController(true);
+            }
         }
-        // if (Input.GetKeyDown(interactKey))
-        // {
-        //     RaycastHit2D hit = Physics2D.Raycast(rigidbody2d.position + Vector2.up * 0.2f, lookDirection, 1.5f, LayerMask.GetMask("Interactable"));
-        //     if (hit.collider != null)
-        //     {
-        //         TreasureChest chest = hit.collider.GetComponent<TreasureChest>();
-        //         Debug.Log("Raycast has hit the object " + hit.collider.gameObject);
-        //         if (chest != null){
-        //             chest.OpenAction();
-        //         }
-        //     }
-        // }
     }
     IEnumerator DelayTurnOn()
     {
@@ -352,13 +351,11 @@ public class Explorer : MonoBehaviour
 
             PlaySound(HitClip);
         }
-
         health = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
         if (health == 0)
         {
             Dead();
         }
-
     }
 
     public void RechareLight(int amount)

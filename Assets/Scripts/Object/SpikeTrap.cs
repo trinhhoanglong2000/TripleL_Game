@@ -20,12 +20,28 @@ public class SpikeTrap : MonoBehaviour
     {
 
     }
+
     void OnTriggerEnter2D(Collider2D other)
     {
         Explorer controller = other.GetComponent<Explorer>();
         if (controller != null)
         {
             controller.ChangeHealth(-1);
+            animator.SetTrigger("Trigger");
+
+        }
+        Mummy controllerMummy = other.GetComponent<Mummy>();
+        Debug.Log(controllerMummy);
+        if (controllerMummy != null)
+        {
+            controllerMummy.ChangeHealth(-1);
+            animator.SetTrigger("Trigger");
+
+        }
+        RedMummy controllerRedMummy = other.GetComponent<RedMummy>();
+        if (controllerRedMummy != null)
+        {
+            controllerRedMummy.ChangeHealth(-1);
             animator.SetTrigger("Trigger");
 
         }

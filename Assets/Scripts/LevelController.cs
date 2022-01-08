@@ -8,7 +8,6 @@ public class LevelController : MonoBehaviour
     // Start is called before the first frame update
     Animator animator;
     public GameObject LevelGate;
-    public GameObject Stats;
 
     private bool levelfinish = false;
 

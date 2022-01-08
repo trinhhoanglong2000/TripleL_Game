@@ -6,6 +6,7 @@ using Pathfinding;
 public class RedMummy : MonoBehaviour
 {
     public AudioClip AWakeClip;
+    public AudioClip HitClip;
     public float waitTime = 3f;
     public float speed = 2;
     public int damage = 1;
@@ -164,8 +165,17 @@ public class RedMummy : MonoBehaviour
 
 
     }
+    IEnumerator Dead()
+    {
+        animator.SetTrigger("Dead");
+        speed = 0;
+        damage = 0;
+        yield return new WaitForSeconds(1f);
+        Destroy(gameObject);
+    }
     public void ChangeHealth(int amount)
     {
+        Debug.Log("Pain");
         if (amount < 0)
         {
             if (isInvincible)
@@ -173,9 +183,14 @@ public class RedMummy : MonoBehaviour
 
             isInvincible = true;
             invincibleTimer = timeInvincible;
+            PlaySound(HitClip);
         }
 
         health = Mathf.Clamp(health + amount, 0, maxHealth);
+        if (health == 0)
+        {
+            StartCoroutine(Dead());
+        }
 
     }
     void OnTriggerExit2D(Collider2D other)
@@ -190,5 +205,6 @@ public class RedMummy : MonoBehaviour
         }
 
     }
+    
 
 }

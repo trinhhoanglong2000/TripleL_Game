@@ -5074,6 +5074,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AWakeClip: {fileID: 8300000, guid: 554746eaee48f5f4a8e9f8ebbad72113, type: 3}
+  HitClip: {fileID: 8300000, guid: 3f261845df2126448904e50dfc2f3c31, type: 3}
   waitTime: 3
   speed: 4
   damage: 2
@@ -5176,7 +5177,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.628
   m_Pitch: 1
   Loop: 0
   Mute: 0

@@ -59,6 +59,13 @@ public class GameInfo : MonoBehaviour
         textpoint.text = Point.ToString();
         textSpeed.text = speedpoint.ToString();
     }
+    public void PlusPoint()
+    {
+        
+        Point++;
+        textpoint.text = Point.ToString();
+      
+    }
     public void Done()
     {
         Debug.Log(Energy);
