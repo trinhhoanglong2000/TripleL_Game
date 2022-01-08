@@ -8,6 +8,7 @@ public class LevelController : MonoBehaviour
     // Start is called before the first frame update
     Animator animator;
     public GameObject LevelGate;
+    public GameObject Stats;
 
     private bool levelfinish = false;
 
@@ -42,6 +43,18 @@ public class LevelController : MonoBehaviour
         animator.SetTrigger("Open");
 
         yield return new WaitForSeconds(2f);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+        int index = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(index + 1);
+        GameInfo gameinfo = FindObjectOfType<GameInfo>();
+        Explorer explorer = FindObjectOfType<Explorer>();
+        gameinfo.setCanvas(true);
+        gameinfo.setStat(explorer.speed,explorer.health,explorer.maxHealth,explorer.Energy,explorer.MaxEnergy);
+
+
+ 
+
+
+
+
     }
 }

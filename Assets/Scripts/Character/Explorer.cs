@@ -5,6 +5,8 @@ using UnityEngine.UI;
 public class Explorer : MonoBehaviour
 {
     //public 
+
+
     [Header("Stats")]
     public float speed = 10.0f;
     [Range(0, 11)]
@@ -14,6 +16,15 @@ public class Explorer : MonoBehaviour
     public int maxHealth;
     public float Energy;
     public float MaxEnergy;
+
+    public int props_health { get { return health; } }
+    public int props_maxhealth { get { return maxHealth; } }
+    public float props_Energy { get { return Energy; } }
+    public float props_MaxEnergy { get { return MaxEnergy; } }
+    public float props_speed { get { return speed; } }
+
+
+
     public float timeInvincible = 2.0f;
     public float Eneryrate = 1f;
     public float delayTurnOn = 1f;
@@ -87,9 +98,19 @@ public class Explorer : MonoBehaviour
         LightcolliderEnemy.SetActive(LightOn);
         audioSource = GetComponent<AudioSource>();
 
+        //get Stats
+
+
 
     }
-
+    public void setStat(float a, int b, int c, float d, float e)
+    {
+        speed = a;
+        health = b;
+        maxHealth = c;
+        Energy = d;
+        MaxEnergy = e;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -241,7 +262,7 @@ public class Explorer : MonoBehaviour
                 //Interact with glowing rock
                 if (rock != null)
                 {
-                   
+
                     if (timer > (progressTime))
                     {
                         rock.comsume();
