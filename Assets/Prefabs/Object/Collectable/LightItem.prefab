@@ -124,6 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af1e26f186508404c84053fdcf98fa89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CollectClip: {fileID: 8300000, guid: 94b4067d2df78a348a7a04fd1d224a07, type: 3}
   rechargeAmount: 3
 --- !u!210 &3080895961680420842
 SortingGroup:
