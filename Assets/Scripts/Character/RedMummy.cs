@@ -96,8 +96,6 @@ public class RedMummy : MonoBehaviour
         //set Movement speed
         SleepAfterHit = false;
 
-
-
     }
     public void PlaySound(AudioClip clip)
     {

@@ -9,7 +9,7 @@ public class TreasureChest : MonoBehaviour
 
     // Update is called once per frame
     // Timer controls
-    private float holdTime = 2.0f;
+    //private float holdTime = 2.0f;
     
     public KeyCode key;
     void Start()

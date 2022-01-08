@@ -32,11 +32,16 @@ public class Explorer : MonoBehaviour
     public Image EnergyBar;
     public Image EnergyIcon;
     public GameObject ImageProgressBar;
+    public ParticleSystem blood;
+    [Header("Audio ")]
+
+    public AudioClip HitClip;
+    public AudioClip Walking;
     public float progressTime = 2f;
     private float LerpSpeed;
+    private bool isDead = false;
     // Timer ---------------------------------------------
     private float timer = 0f;
-    private float startTime = 0f;
 
 
     //Physic and Movement
@@ -58,11 +63,12 @@ public class Explorer : MonoBehaviour
 
     bool isInvincible;
     float invincibleTimer;
-
+    AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
+        blood.Stop();
         rigidbody2d = GetComponent<Rigidbody2D>();
         Lightcollider = GameObject.FindGameObjectWithTag("PlayerLightEnemy");
         LightcolliderEnemy = GameObject.FindGameObjectWithTag("PlayerLight");
@@ -79,6 +85,8 @@ public class Explorer : MonoBehaviour
         }
         Lightcollider.SetActive(LightOn);
         LightcolliderEnemy.SetActive(LightOn);
+        audioSource = GetComponent<AudioSource>();
+
 
     }
 
@@ -176,7 +184,7 @@ public class Explorer : MonoBehaviour
         animator.SetFloat("Speed", move.magnitude);
 
         //
-        if (Input.GetKeyDown(KeyCode.O))
+        if (Input.GetKeyDown(KeyCode.O) && !isDead)
         {
             //delay when turn on
             if (isDelay)
@@ -235,19 +243,26 @@ public class Explorer : MonoBehaviour
             }
             else
             {
-                GameObject tag = GameObject.FindGameObjectWithTag("TreasureChest");
+                GameObject[] tags = GameObject.FindGameObjectsWithTag("TreasureChest");
 
-                TreasureChest chest = tag.GetComponent<TreasureChest>();
-                chest.CloseAction();
+                foreach (GameObject tag in tags)
+                {
+                    TreasureChest chest = tag.GetComponent<TreasureChest>();
+                    chest.CloseAction();
+                }
+
             }
         }
         if (Input.GetKeyUp(interactKey))
         {
-            GameObject tag = GameObject.FindGameObjectWithTag("TreasureChest");
             ImageProgressBar.SetActive(false);
+            GameObject[] tags = GameObject.FindGameObjectsWithTag("TreasureChest");
 
-            TreasureChest chest = tag.GetComponent<TreasureChest>();
-            chest.CloseAction();
+            foreach (GameObject tag in tags)
+            {
+                TreasureChest chest = tag.GetComponent<TreasureChest>();
+                chest.CloseAction();
+            }
         }
         // if (Input.GetKeyDown(interactKey))
         // {
@@ -268,6 +283,15 @@ public class Explorer : MonoBehaviour
         yield return new WaitForSeconds(delayTurnOn);
         //set Movement speed
         isDelay = false;
+
+
+    }
+    IEnumerator DelayBlood()
+    {
+        blood.Play();
+        yield return new WaitForSeconds(1f);
+        //set Movement speed
+        blood.Stop();
 
 
     }
@@ -292,16 +316,41 @@ public class Explorer : MonoBehaviour
 
             isInvincible = true;
             invincibleTimer = timeInvincible;
+            StartCoroutine(DelayBlood());
+
+            PlaySound(HitClip);
         }
 
         health = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
+        if (health == 0)
+        {
+            Dead();
+        }
 
     }
+
     public void RechareLight(int amount)
     {
 
         Energy = Mathf.Clamp(Energy + amount, 0, MaxEnergy);
 
     }
+    private void Dead()
+    {
+        animator.SetTrigger("Dead");
+        Lightcollider.SetActive(false);
+        LightcolliderEnemy.SetActive(false);
+        LightOn = false;
+        isDead = true;
+        speed = 0;
 
+    }
+    public void PlaySound(AudioClip clip)
+    {
+        audioSource.PlayOneShot(clip);
+    }
+    public void WalkingSound()
+    {
+        PlaySound(Walking);
+    }
 }
