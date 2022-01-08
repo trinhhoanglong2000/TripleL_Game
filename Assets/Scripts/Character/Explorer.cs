@@ -278,7 +278,6 @@ public class Explorer : MonoBehaviour
         {
             Energy = Mathf.Clamp(Energy - Eneryrate * Time.deltaTime, 0, MaxEnergy);
         }
-        Debug.Log(Time.deltaTime);
         Vector2 position = rigidbody2d.position;
         position.x = position.x + deltaX;
         position.y = position.y + deltaY;
