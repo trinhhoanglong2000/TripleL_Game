@@ -20,8 +20,19 @@ public class FireTrap : MonoBehaviour
         if (isActive)
         {
             Timer -= Time.deltaTime;
-           
+
         }
+    }
+    private void Enter()
+    {
+        isActive = true;
+        animator.SetBool("Trigger", true);
+    }
+    private void Exit()
+    {
+        animator.SetBool("Trigger", false);
+        isActive = false;
+        Timer = TimeActive;
     }
     void OnTriggerStay2D(Collider2D other)
     {
@@ -29,12 +40,28 @@ public class FireTrap : MonoBehaviour
 
         if (controller != null)
         {
-            isActive = true;
-            animator.SetBool("Trigger", true);
-            if (Timer <0)
+            Enter();
+            if (Timer < 0)
                 controller.ChangeHealth(-1);
-             
+
         }
+        Mummy controllerMummy = other.GetComponent<Mummy>();
+        if (controllerMummy != null)
+        {
+            Enter();
+            if (Timer < 0)
+                controllerMummy.ChangeHealth(-1);
+
+        }
+        RedMummy controllerRedMummy = other.GetComponent<RedMummy>();
+        if (controllerRedMummy != null)
+        {
+            Enter();
+            if (Timer < 0)
+                controllerRedMummy.ChangeHealth(-1);
+
+        }
+
     }
 
     void OnTriggerExit2D(Collider2D other)
@@ -43,10 +70,18 @@ public class FireTrap : MonoBehaviour
 
         if (controller != null)
         {
-            animator.SetBool("Trigger", false);
-            isActive = false;
-            Timer = TimeActive;
+            Exit();
 
+        }
+        Mummy controllerMummy = other.GetComponent<Mummy>();
+        if (controllerMummy != null)
+        {
+            Exit();
+        }
+        RedMummy controllerRedMummy = other.GetComponent<RedMummy>();
+        if (controllerRedMummy != null)
+        {
+           Exit();
         }
     }
 

@@ -5,27 +5,31 @@ using UnityEngine;
 public class TreasureChest : MonoBehaviour
 {
     Animator animator;
+    AudioSource audioSource;
+    public AudioClip OpenClip;
 
-
+    private bool doOneTime = false;
     // Update is called once per frame
     // Timer controls
     //private float holdTime = 2.0f;
-    
+
     public KeyCode key;
+    private bool opened = false;
     void Start()
     {
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
 
     }
     // void Update()
     // {
-    
+
     //     // Starts the timer from when the key is pressed
     //     if (Input.GetKeyDown(key))
     //     {
     //         startTime = Time.time;
     //         timer = startTime;
-            
+
     //     }
 
     //     // Adds time onto the timer so long as the key is pressed
@@ -47,15 +51,42 @@ public class TreasureChest : MonoBehaviour
     //     }
 
     // }
-    public void OpenAction(){
-        animator.SetBool("Open",true);
+    public void OpenAction()
+    {
+        animator.SetBool("Open", true);
+        if (!doOneTime)
+        {
+            audioSource.PlayOneShot(OpenClip);
+            doOneTime = true;
+        }
     }
-    public void CloseAction(){
-        animator.SetBool("Open",false);
+    public void CloseAction()
+    {
+        animator.SetBool("Open", false);
+        audioSource.Stop();
+        doOneTime = false;
     }
     // Method called after held for required time
+    IEnumerator DelayFade()
+    {
+        animator.SetTrigger("Fade");
+        audioSource.Stop();
+        yield return new WaitForSeconds(1f);
+        //FindObjectOfType<GameInfo>().PlusPoint();
+        FindObjectOfType<Explorer>().ChangeHealth(1);
+        FindObjectOfType<Explorer>().RechareLight(1);
+
+        Destroy(gameObject);
+
+    }
     public void Open()
     {
-        Debug.Log("OPENED");
+        if (!opened)
+        {
+            Debug.Log("OPENED");
+            opened = true;
+            doOneTime = false;
+            StartCoroutine(DelayFade());
+        }
     }
 }

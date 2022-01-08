@@ -176,6 +176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AWakeClip: {fileID: 8300000, guid: d7eadcf92ca98fc47ae71509d1098173, type: 3}
+  HitClip: {fileID: 8300000, guid: 3f261845df2126448904e50dfc2f3c31, type: 3}
   waitTime: 2
   speed: 3
   damage: 1
