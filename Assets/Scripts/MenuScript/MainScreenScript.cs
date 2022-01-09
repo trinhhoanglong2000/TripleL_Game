@@ -21,14 +21,19 @@ public class MainScreenScript : MonoBehaviour
     {
         LoadScene(1);
     }
-  
-   
-   public void LoadScene(int index)
+
+
+    public void LoadScene(int index)
     {
         SceneManager.LoadScene(index);
+        GameObject gameinfo = GameObject.FindGameObjectWithTag("gameinfo");
+        if (gameinfo!=null){
+            GameObject.Destroy(gameinfo);
+        }
         Instantiate(Gameinfo, new Vector3(0, 0, 0), Quaternion.identity);
+            
     }
-    
+
     public void QuitGame()
     {
         Application.Quit();
