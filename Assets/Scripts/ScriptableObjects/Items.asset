@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd455e1f25dd05645962a203573a81b2, type: 3}
+  m_Name: Items
+  m_EditorClassIdentifier: 
+  text: 'There''re 3 more types of resource you can pick up
+
+    The orb on the left
+    is the point orb which give you a point to your skills, it will come in handy
+    later on
+
+    The chest and the enerystone is a special type, you must hold E
+    on your keyboard to harvest it
+
+    The chest gives you full hp and energy while
+    the rock restore fully your energy
+
+'
