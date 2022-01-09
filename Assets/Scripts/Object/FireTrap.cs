@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FireTrap : MonoBehaviour
 {
@@ -8,11 +9,14 @@ public class FireTrap : MonoBehaviour
     public float TimeActive = 1f;
     bool isActive;
     private float Timer;
+    AudioSource audioSource;
 
     void Start()
     {
         Timer = TimeActive;
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
+        audioSource.Stop();
     }
 
     void Update()
@@ -25,12 +29,18 @@ public class FireTrap : MonoBehaviour
     }
     private void Enter()
     {
+        if (!isActive){
+            audioSource.Play();
+        }
         isActive = true;
         animator.SetBool("Trigger", true);
+
     }
     private void Exit()
     {
+        
         animator.SetBool("Trigger", false);
+        audioSource.Stop();
         isActive = false;
         Timer = TimeActive;
     }
@@ -81,7 +91,7 @@ public class FireTrap : MonoBehaviour
         RedMummy controllerRedMummy = other.GetComponent<RedMummy>();
         if (controllerRedMummy != null)
         {
-           Exit();
+            Exit();
         }
     }
 

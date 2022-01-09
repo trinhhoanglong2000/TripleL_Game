@@ -51,6 +51,7 @@ public class Explorer : MonoBehaviour
     public float progressTime = 2f;
     private float LerpSpeed;
     private bool isDead = false;
+    public GameObject FaintUI;
     // Timer ---------------------------------------------
     private float timer = 0f;
 
@@ -354,7 +355,7 @@ public class Explorer : MonoBehaviour
         health = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
         if (health == 0)
         {
-            Dead();
+            StartCoroutine(Dead());
         }
     }
 
@@ -364,7 +365,7 @@ public class Explorer : MonoBehaviour
         Energy = Mathf.Clamp(Energy + amount, 0, MaxEnergy);
 
     }
-    private void Dead()
+    IEnumerator Dead()
     {
         animator.SetTrigger("Dead");
         Lightcollider.SetActive(false);
@@ -372,6 +373,8 @@ public class Explorer : MonoBehaviour
         LightOn = false;
         isDead = true;
         speed = 0;
+        yield return new WaitForSeconds(1f);
+        FaintUI.SetActive(true);
 
     }
     public void PlaySound(AudioClip clip)

@@ -720,6 +720,7 @@ MonoBehaviour:
   HitClip: {fileID: 8300000, guid: 73ad63210ea530846a718bf5ab6efee5, type: 3}
   Walking: {fileID: 8300000, guid: f2bfbb1637d0ad545bb538cd7439f6f5, type: 3}
   progressTime: 1.5
+  FaintUI: {fileID: 0}
 --- !u!50 &-4658766207468006115
 Rigidbody2D:
   serializedVersion: 4

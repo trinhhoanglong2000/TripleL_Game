@@ -6,12 +6,13 @@ public class SpikeTrap : MonoBehaviour
 {
     // Start is called before the first frame update
     Animator animator;
+    public AudioClip HitClip;
 
-
+    AudioSource audioSource;
     void Start()
     {
-
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
 
@@ -28,6 +29,7 @@ public class SpikeTrap : MonoBehaviour
         {
             controller.ChangeHealth(-1);
             animator.SetTrigger("Trigger");
+            audioSource.PlayOneShot(HitClip);
 
         }
         Mummy controllerMummy = other.GetComponent<Mummy>();
@@ -36,6 +38,7 @@ public class SpikeTrap : MonoBehaviour
         {
             controllerMummy.ChangeHealth(-1);
             animator.SetTrigger("Trigger");
+            audioSource.PlayOneShot(HitClip);
 
         }
         RedMummy controllerRedMummy = other.GetComponent<RedMummy>();
@@ -43,8 +46,10 @@ public class SpikeTrap : MonoBehaviour
         {
             controllerRedMummy.ChangeHealth(-1);
             animator.SetTrigger("Trigger");
+            audioSource.PlayOneShot(HitClip);
 
         }
+
 
     }
 }
