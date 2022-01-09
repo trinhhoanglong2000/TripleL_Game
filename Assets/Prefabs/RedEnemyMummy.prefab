@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1051275346
 Transform:
   m_ObjectHideFlags: 0
@@ -88,7 +88,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1307189816
 Transform:
   m_ObjectHideFlags: 0
@@ -5080,6 +5080,9 @@ MonoBehaviour:
   damage: 2
   timeInvincible: 2
   maxHealth: 20
+  Eye:
+  - {fileID: 1307189815}
+  - {fileID: 1051275345}
   health: 10
 --- !u!114 &374762426
 MonoBehaviour:

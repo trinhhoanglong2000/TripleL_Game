@@ -12,7 +12,7 @@ public class RedMummy : MonoBehaviour
     public int damage = 1;
     public float timeInvincible = 2.0f;
     public int maxHealth = 20;
-    
+    public GameObject[] Eye;
     public int health;
     [Range(0, 20)]
     Rigidbody2D rb;
@@ -80,7 +80,8 @@ public class RedMummy : MonoBehaviour
         Debug.Log(AWakeClip);
         Debug.Log(audioSource);
         PlaySound(AWakeClip);
-
+        Eye[0].SetActive(true);
+        Eye[1].SetActive(true);
         yield return new WaitForSeconds(waitTime);
         //set Movement speed
         Roar = true;
