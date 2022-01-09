@@ -72,7 +72,7 @@ public class TreasureChest : MonoBehaviour
         animator.SetTrigger("Fade");
         audioSource.Stop();
         yield return new WaitForSeconds(1f);
-        //FindObjectOfType<GameInfo>().PlusPoint();
+        FindObjectOfType<GameInfo>().PlusPoint();
         FindObjectOfType<Explorer>().ChangeHealth(1);
         FindObjectOfType<Explorer>().RechareLight(1);
 

@@ -45,7 +45,7 @@ public class GameInfo : MonoBehaviour
     {
         if (Point <= 0) return;
         energypoint += 1;
-        MaxEnergy += 5;
+        MaxEnergy += 2;
         Point--;
         textpoint.text = Point.ToString();
         textEnergy.text = energypoint.ToString();
