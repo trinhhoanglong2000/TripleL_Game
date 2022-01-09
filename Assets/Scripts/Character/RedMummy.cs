@@ -76,7 +76,9 @@ public class RedMummy : MonoBehaviour
     }
     IEnumerator Awaking()
     {
-
+        Debug.Log("Awaking");
+        Debug.Log(AWakeClip);
+        Debug.Log(audioSource);
         PlaySound(AWakeClip);
 
         yield return new WaitForSeconds(waitTime);
