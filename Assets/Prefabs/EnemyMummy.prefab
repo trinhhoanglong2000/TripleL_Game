@@ -183,7 +183,7 @@ MonoBehaviour:
   timeInvincible: 2
   maxHealth: 20
   Eye: {fileID: 845630200}
-  health: 5
+  health: 2
 --- !u!95 &7713167867843306269
 Animator:
   serializedVersion: 3

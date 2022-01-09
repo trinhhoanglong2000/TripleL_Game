@@ -5083,7 +5083,7 @@ MonoBehaviour:
   Eye:
   - {fileID: 1307189815}
   - {fileID: 1051275345}
-  health: 10
+  health: 4
 --- !u!114 &374762426
 MonoBehaviour:
   m_ObjectHideFlags: 0
