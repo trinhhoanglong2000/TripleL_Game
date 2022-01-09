@@ -34,6 +34,7 @@ public class GameInfo : MonoBehaviour
     public void PlusHealth()
     {
         if (Point <= 0) return;
+        if (MaxHealth +1 >=11) return ;
         healthpoint += 1;
         MaxHealth += 1;
         Point--;
