@@ -50,8 +50,14 @@ public class LevelController : MonoBehaviour
         SceneManager.LoadScene(index + 1);
         GameInfo gameinfo = FindObjectOfType<GameInfo>();
         Explorer explorer = FindObjectOfType<Explorer>();
-        gameinfo.setCanvas(true);
-        gameinfo.setStat(explorer.speed, explorer.health, explorer.maxHealth, explorer.Energy, explorer.MaxEnergy);
+        //change this when add more scene
+        if (index != 3)
+        {
+            gameinfo.setCanvas(true);
+           
+        }
+         gameinfo.setStat(explorer.speed, explorer.health, explorer.maxHealth, explorer.Energy, explorer.MaxEnergy);
+
 
 
 
