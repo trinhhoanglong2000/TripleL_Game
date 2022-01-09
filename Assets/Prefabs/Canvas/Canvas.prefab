@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 392954094}
-  - component: {fileID: 7449487527313735492}
   - component: {fileID: 392954095}
   m_Layer: 5
   m_Name: Option
@@ -38,18 +37,6 @@ RectTransform:
   m_AnchoredPosition: {x: -5.6, y: -23.7}
   m_SizeDelta: {x: 45.7697, y: -65.0487}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &7449487527313735492
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 392954093}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b770ebd05275f804c9a9348044f016fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &392954095
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118,7 +105,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 698531710}
+      - m_Target: {fileID: 1219822452}
         m_TargetAssemblyTypeName: TextChange, Assembly-CSharp
         m_MethodName: FillBlackText
         m_Mode: 1
@@ -141,7 +128,7 @@ GameObject:
   - component: {fileID: 525969276}
   - component: {fileID: 525969279}
   - component: {fileID: 525969278}
-  - component: {fileID: 525969277}
+  - component: {fileID: 847647486}
   m_Layer: 5
   m_Name: QuitToMenu
   m_TagString: Untagged
@@ -210,7 +197,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: QUIT TO MENU
---- !u!114 &525969277
+--- !u!114 &847647486
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -233,7 +220,7 @@ GameObject:
   - component: {fileID: 698531709}
   - component: {fileID: 698531712}
   - component: {fileID: 698531711}
-  - component: {fileID: 698531710}
+  - component: {fileID: 1219822452}
   m_Layer: 5
   m_Name: Option
   m_TagString: Untagged
@@ -304,7 +291,7 @@ MonoBehaviour:
   m_Text: 'Option
 
 '
---- !u!114 &698531710
+--- !u!114 &1219822452
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -524,7 +511,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 525969277}
+      - m_Target: {fileID: 847647486}
         m_TargetAssemblyTypeName: TextChange, Assembly-CSharp
         m_MethodName: FillBlackText
         m_Mode: 1
@@ -551,7 +538,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1373214898608746797
 RectTransform:
   m_ObjectHideFlags: 0
@@ -878,7 +865,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6348553576601723664}
   - component: {fileID: 352576636900914401}
-  - component: {fileID: 4853389730504616970}
   m_Layer: 5
   m_Name: Back (1)
   m_TagString: Untagged
@@ -974,7 +960,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 4853389730504616970}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: TextChange, Assembly-CSharp
         m_MethodName: FillBlackText
         m_Mode: 1
@@ -986,18 +972,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &4853389730504616970
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 508962230174086396}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b770ebd05275f804c9a9348044f016fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+      - m_Target: {fileID: 7576600001820918081}
+        m_TargetAssemblyTypeName: TextChange, Assembly-CSharp
+        m_MethodName: FillBlackText
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &775920864339289678
 GameObject:
   m_ObjectHideFlags: 0
@@ -1455,7 +1441,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -170.98932, y: 77.06582}
+  m_AnchoredPosition: {x: 11.801941, y: 77.06582}
   m_SizeDelta: {x: 248.5971, y: 36.7327}
   m_Pivot: {x: -0.18568085, y: 1.5645564}
 --- !u!222 &4358661182675188436
@@ -2109,7 +2095,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5442536958860324030
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2570,7 +2556,6 @@ GameObject:
   - component: {fileID: 2714414049325411876}
   - component: {fileID: 415238301738239139}
   - component: {fileID: 7576600001820918081}
-  - component: {fileID: 4455747789756465028}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -2651,20 +2636,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b770ebd05275f804c9a9348044f016fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4455747789756465028
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4772749954056381631}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4782fdc8a61e904e9ed8fb15a01f84e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioMixer: {fileID: 0}
-  volumeStateText: {fileID: 0}
 --- !u!1 &5122509789076631718
 GameObject:
   m_ObjectHideFlags: 0
@@ -2773,7 +2744,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2301145080986227601
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2911,7 +2882,6 @@ GameObject:
   - component: {fileID: 381397900751759360}
   - component: {fileID: 4608412117043186621}
   - component: {fileID: 4365599038726596040}
-  - component: {fileID: 4393216019156328347}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -2992,20 +2962,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b770ebd05275f804c9a9348044f016fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4393216019156328347
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5855667848769155940}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4782fdc8a61e904e9ed8fb15a01f84e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioMixer: {fileID: 0}
-  volumeStateText: {fileID: 0}
 --- !u!1 &6626194113849664724
 GameObject:
   m_ObjectHideFlags: 0

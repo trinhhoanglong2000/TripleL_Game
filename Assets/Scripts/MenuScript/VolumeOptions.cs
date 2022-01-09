@@ -60,6 +60,10 @@ public class VolumeOptions : MonoBehaviour
     }
     public void Load()
     {
+        if (!PlayerPrefs.HasKey("musicVolume"))
+        {
+            PlayerPrefs.SetFloat("musicVolume", 1);
+        }
         ChangeTextVolumeState();
         audioMixer.SetFloat("volume", PlayerPrefs.GetFloat("musicVolume"));
     }
