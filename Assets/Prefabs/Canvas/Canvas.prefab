@@ -36,7 +36,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.19100001, y: 0.104133084}
   m_AnchorMax: {x: 0.7617558, y: 0.22614361}
-  m_AnchoredPosition: {x: 11.799957, y: 0.000015258789}
+  m_AnchoredPosition: {x: 11.799927, y: 0.000015258789}
   m_SizeDelta: {x: -3.4029007, y: 4.7327}
   m_Pivot: {x: -0.18568085, y: 1.5645564}
 --- !u!222 &4358661182675188436
@@ -120,7 +120,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3660661744565838747}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 767224654}
+        m_TargetAssemblyTypeName: FainController, Assembly-CSharp
+        m_MethodName: ReturnMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1810267722923269604
 GameObject:
   m_ObjectHideFlags: 0
@@ -2475,6 +2487,7 @@ GameObject:
   - component: {fileID: 7840967941612111594}
   - component: {fileID: 6493150356550674781}
   - component: {fileID: 3632366590047859162}
+  - component: {fileID: 767224654}
   m_Layer: 5
   m_Name: FaintScene
   m_TagString: Untagged
@@ -2540,3 +2553,15 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &767224654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8841402774120193411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4e7b8715c8f70c4fa9e06e91b55bda2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

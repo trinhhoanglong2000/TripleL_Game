@@ -7,7 +7,7 @@ public class TreasureChest : MonoBehaviour
     Animator animator;
     AudioSource audioSource;
     public AudioClip OpenClip;
-
+    public GameObject Dialog;
     private bool doOneTime = false;
     // Update is called once per frame
     // Timer controls
@@ -86,6 +86,7 @@ public class TreasureChest : MonoBehaviour
             Debug.Log("OPENED");
             opened = true;
             doOneTime = false;
+            Dialog.SetActive(true);
             StartCoroutine(DelayFade());
         }
     }
