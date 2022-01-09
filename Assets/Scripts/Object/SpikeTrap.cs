@@ -33,7 +33,6 @@ public class SpikeTrap : MonoBehaviour
 
         }
         Mummy controllerMummy = other.GetComponent<Mummy>();
-        Debug.Log(controllerMummy);
         if (controllerMummy != null)
         {
             controllerMummy.ChangeHealth(-1);

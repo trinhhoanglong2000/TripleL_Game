@@ -8,6 +8,7 @@ TagManager:
   - PlayerLightEnemy
   - TreasureChest
   - GlowingRock
+  - gameinfo
   layers:
   - Default
   - TransparentFX

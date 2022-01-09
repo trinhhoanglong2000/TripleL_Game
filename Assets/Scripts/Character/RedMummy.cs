@@ -177,7 +177,6 @@ public class RedMummy : MonoBehaviour
     }
     public void ChangeHealth(int amount)
     {
-        Debug.Log("Pain");
         if (amount < 0)
         {
             if (isInvincible)
