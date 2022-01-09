@@ -1707,7 +1707,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d5665da318cd0d489c9af0818cc7be8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  screenStateText: {fileID: 0}
+  screenStateText: {fileID: 641990249}
 --- !u!114 &499319734
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -14,7 +14,7 @@ public class MainScreenScript : MonoBehaviour
         {
             PlayerPrefs.SetFloat("musicVolume", 1);
         }
-        Load();
+
     }
     public void StartGame()
     {
@@ -27,10 +27,6 @@ public class MainScreenScript : MonoBehaviour
         SceneManager.LoadScene(index);
     }
     
-    public void Load() 
-    {
-        audioMixer.SetFloat("volume" , PlayerPrefs.GetFloat("musicVolume"));
-    }
     public void QuitGame()
     {
         Application.Quit();
