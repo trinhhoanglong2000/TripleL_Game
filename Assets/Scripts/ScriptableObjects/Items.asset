@@ -18,10 +18,10 @@ MonoBehaviour:
     is the point orb which give you a point to your skills, it will come in handy
     later on
 
-    The chest and the enerystone is a special type, you must hold E
+    The chest and the enerystone is a special type, you must hold "E" 
     on your keyboard to harvest it
 
-    The chest gives you full hp and energy while
-    the rock restore fully your energy
+    The chest gives some valuable items and energy
+    while the rock restore a large amount of your energy
 
 '

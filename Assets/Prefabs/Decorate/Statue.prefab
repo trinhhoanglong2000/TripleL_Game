@@ -92,7 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 795444747913714508}
   - component: {fileID: 3726145219695380733}
-  - component: {fileID: 2720032235168894689}
+  - component: {fileID: 8554234526005238960}
   m_Layer: 0
   m_Name: Statue
   m_TagString: Untagged
@@ -129,8 +129,8 @@ SortingGroup:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!58 &2720032235168894689
-CircleCollider2D:
+--- !u!61 &8554234526005238960
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -142,9 +142,19 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.34058332, y: -0.07740557}
+  m_Offset: {x: -0.3783822, y: -0.22209382}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 0.577405
+  m_Size: {x: 1.7567644, y: 0.55581236}
+  m_EdgeRadius: 0
 --- !u!1 &2585112504251946794
 GameObject:
   m_ObjectHideFlags: 0

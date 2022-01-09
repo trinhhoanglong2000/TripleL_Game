@@ -348,9 +348,12 @@ public class Explorer : MonoBehaviour
 
             isInvincible = true;
             invincibleTimer = timeInvincible;
-            StartCoroutine(DelayBlood());
+            if (health != 0)
+            {
+                StartCoroutine(DelayBlood());
 
-            PlaySound(HitClip);
+                PlaySound(HitClip);
+            }
         }
         health = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
         if (health == 0)
@@ -384,5 +387,9 @@ public class Explorer : MonoBehaviour
     public void WalkingSound()
     {
         PlaySound(Walking);
+    }
+    public void BecomeInvi()
+    {
+        isInvincible = true;
     }
 }

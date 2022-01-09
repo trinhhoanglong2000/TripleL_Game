@@ -8,13 +8,16 @@ public class LevelController : MonoBehaviour
     // Start is called before the first frame update
     Animator animator;
     public GameObject LevelGate;
+    public AudioClip OpenClip;
 
     private bool levelfinish = false;
 
-
+    AudioSource audioSource;
     void Start()
     {
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
+
 
     }
 
@@ -33,6 +36,7 @@ public class LevelController : MonoBehaviour
         Explorer player = other.gameObject.GetComponent<Explorer>();
         if (player != null && levelfinish)
         {
+            player.BecomeInvi();
             //Win
             StartCoroutine(LoadNextScene());
         }
@@ -40,17 +44,17 @@ public class LevelController : MonoBehaviour
     IEnumerator LoadNextScene()
     {
         animator.SetTrigger("Open");
-
+        audioSource.PlayOneShot(OpenClip);
         yield return new WaitForSeconds(2f);
         int index = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(index + 1);
         GameInfo gameinfo = FindObjectOfType<GameInfo>();
         Explorer explorer = FindObjectOfType<Explorer>();
         gameinfo.setCanvas(true);
-        gameinfo.setStat(explorer.speed,explorer.health,explorer.maxHealth,explorer.Energy,explorer.MaxEnergy);
+        gameinfo.setStat(explorer.speed, explorer.health, explorer.maxHealth, explorer.Energy, explorer.MaxEnergy);
 
 
- 
+
 
 
 
