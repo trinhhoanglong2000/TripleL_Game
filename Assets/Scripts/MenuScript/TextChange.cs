@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
  
 public class TextChange : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 { 
+
     public void OnPointerEnter(PointerEventData eventData)
     {
         GetComponent<Text>().color = Color.red; 

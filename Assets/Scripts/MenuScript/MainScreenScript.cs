@@ -20,15 +20,13 @@ public class MainScreenScript : MonoBehaviour
     {
         LoadScene(3);
     }
+  
+   
    public void LoadScene(int index)
     {
         SceneManager.LoadScene(index);
     }
-    public void SetVolume(float silderValue)
-    {
-        audioMixer.SetFloat("volume",Mathf.Log10(silderValue)*20);
-        PlayerPrefs.SetFloat("musicVolume", silderValue);
-    }
+    
     public void Load() 
     {
         audioMixer.SetFloat("volume" , PlayerPrefs.GetFloat("musicVolume"));
