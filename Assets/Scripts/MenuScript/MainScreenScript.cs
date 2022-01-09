@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class MainScreenScript : MonoBehaviour
 {
     public AudioMixer audioMixer;
+    public GameObject Gameinfo;
     private void Start()
     {
         if (!PlayerPrefs.HasKey("musicVolume"))
@@ -18,13 +19,14 @@ public class MainScreenScript : MonoBehaviour
     }
     public void StartGame()
     {
-        LoadScene(3);
+        LoadScene(1);
     }
   
    
    public void LoadScene(int index)
     {
         SceneManager.LoadScene(index);
+        Instantiate(Gameinfo, new Vector3(0, 0, 0), Quaternion.identity);
     }
     
     public void QuitGame()
