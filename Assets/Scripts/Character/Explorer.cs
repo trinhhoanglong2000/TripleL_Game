@@ -49,9 +49,10 @@ public class Explorer : MonoBehaviour
     public AudioClip HitClip;
     public AudioClip Walking;
     public float progressTime = 2f;
+    public GameObject UI;
     private float LerpSpeed;
     private bool isDead = false;
-    public GameObject FaintUI;
+    
     // Timer ---------------------------------------------
     private float timer = 0f;
 
@@ -69,7 +70,9 @@ public class Explorer : MonoBehaviour
     private bool isDelay = false;
     private GameObject Lightcollider, LightcolliderEnemy;
 
-
+    //UI
+    private GameObject FaintUI;
+    private GameObject GameMenuUI;
 
     //==================={Invincible when take dame} ==============
 
@@ -86,6 +89,8 @@ public class Explorer : MonoBehaviour
         LightcolliderEnemy = GameObject.FindGameObjectWithTag("PlayerLight");
         LerpSpeed = 3f * Time.deltaTime;
         processbar = ImageProgressBar.transform.Find("Bar").GetComponent<Image>();
+        FaintUI = UI.transform.Find("FaintScene").gameObject;
+        GameMenuUI = UI.transform.Find("GameMenu").gameObject;
         if (LightOn)
         {
             Light.pointLightOuterRadius = maxLight;
@@ -307,6 +312,16 @@ public class Explorer : MonoBehaviour
                 GlowingRock rock = tag.GetComponent<GlowingRock>();
                 rock.SoundController(true);
             }
+        }
+        if (Input.GetKeyDown(KeyCode.Escape)){
+            if ( Time.timeScale == 0){
+                 Time.timeScale = 1;
+            }
+            else {
+                 Time.timeScale = 0;
+            }
+            GameMenuUI.SetActive(!GameMenuUI.activeSelf);
+           
         }
     }
     IEnumerator DelayTurnOn()
